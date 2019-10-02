@@ -1,16 +1,16 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TrackContacts {
 //    public TrackContacts() {
+//      List contacts = getFiles("contacts.txt");
 //
 //    }
 
-    public  List<String> getFiles(String x) {
+    public static  List<String> getFiles(String x) {
         Path p = Paths.get("src", x);
         List<String> lines = new ArrayList<>();
 
@@ -26,6 +26,21 @@ public class TrackContacts {
         }
         return lines;
 
+
+    }
+
+    public static void addContact(String newContact) {
+
+        List<String> contact = new ArrayList<>();
+            contact.add(newContact);
+        try {
+        Files.write(
+                Paths.get("src", "contacts.txt"),
+                Arrays.asList(newContact), // list with one item
+                StandardOpenOption.APPEND );
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

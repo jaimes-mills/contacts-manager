@@ -36,14 +36,17 @@ public class TrackContacts {
         List<String> contact = new ArrayList<>();
         contact.add(newContact);
         try {
-            Files.write(
-                    Paths.get("src", "contacts.txt"),
-                    Arrays.asList(newContact), // list with one item
-                    StandardOpenOption.APPEND);
+            if (contact.contains(newContact)) {
+                System.out.println(newContact + "Already Exists.");
+            } else {
+                Files.write(
+                        Paths.get("src", "contacts.txt"),
+                        Arrays.asList(newContact), // list with one item
+                        StandardOpenOption.APPEND);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void searchContacts(String userSearch) {
@@ -52,16 +55,34 @@ public class TrackContacts {
             contacts = Files.readAllLines(Paths.get("src", "contacts.txt"));
             for (String name : contacts) {
                 if (name.contains(userSearch)) {
-                    System.out.println("Contact:\n"+ name);
+                    System.out.println("Contact:\n" + name);
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
-                System.out.println("This contact does not exist");
+            System.out.println("This contact does not exist");
+        }
+    }
+
+    public static void deleteContact(String userDelete) {
+        ArrayList<String> contact;
+        try {
+            contact = new ArrayList<>(Files.readAllLines(Paths.get("src", "contacts.txt")));
+
+                 if(contact.contains(userDelete)){
+                     contact.remove(userDelete);
+                 }
+
+
+            System.out.println(contact);
+
+        } catch (IOException e) {
+            e.getMessage();
         }
     }
 }
+
+
 //        try {
 //            List<String> groceryList = Files.readAllLines(groceriesPath);
 //        for (int i = 0; i < groceryList.size(); i += 1) {

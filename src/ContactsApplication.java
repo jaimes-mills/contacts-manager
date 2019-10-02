@@ -3,6 +3,7 @@ public class ContactsApplication {
         TrackContacts x  = new TrackContacts();
         x.getFiles("contacts.txt");
         x.addContact("Mike ");
+        x.searchContacts("Bridget");
 
     }
 }

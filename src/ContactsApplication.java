@@ -4,7 +4,7 @@ public class ContactsApplication {
 //        x.getFiles("contacts.txt");
 //        x.addContact("Mike ");
 //        x.searchContacts("Ed");
-        x.deleteContact("Be");
+        x.deleteContact("Beebo");
 //        x.getFiles("contacts.txt");
     }
 }

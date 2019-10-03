@@ -65,29 +65,23 @@ public class TrackContacts {
     }
 
     public static void deleteContact(String userDelete) {
-        ArrayList<String> contact;
-        try {
-            contact = new ArrayList<>(Files.readAllLines(Paths.get("src", "contacts.txt")));
-
-                 if(contact.contains(userDelete)){
-                     contact.remove(userDelete);
-                 }
-
-
-            System.out.println(contact);
-
+        List<String> contacts;
+        try {//import contacts list from original list string
+            contacts = Files.readAllLines(Paths.get("src", "contacts.txt"));
+            //create new empty list string
+            List<String> newList = new ArrayList<>();
+            for (String name : contacts) {//loop through original display for userDelete
+                if (name.contains(userDelete)) {
+                    continue;// skips over userDelete
+                }
+                newList.add(name); //adds remaining names to new ArrayList
+            }
+            for (String name : newList) {
+                System.out.println(name);
+            }
+            Files.write(Paths.get("src", "contacts.txt"), newList); //overwrites old array list with new list
         } catch (IOException e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 }
-
-
-//        try {
-//            List<String> groceryList = Files.readAllLines(groceriesPath);
-//        for (int i = 0; i < groceryList.size(); i += 1) {
-//            System.out.println((i + 1) + ": " + groceryList.get(i));
-//        }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }

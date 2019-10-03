@@ -22,8 +22,9 @@ public class TrackContacts {
             e.printStackTrace();
         }
 
+            System.out.printf("%20s|","Name | Phone number");
         for (int i = 0; i < contacts.size(); i += 1) {
-            System.out.println("| " + contacts.get(i));
+            System.out.printf("%20s%n", contacts.get(i));
 
         }
         return contacts;

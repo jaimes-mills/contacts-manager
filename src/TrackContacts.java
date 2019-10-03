@@ -1,30 +1,20 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TrackContacts {
-//    public TrackContacts() {
-//      List contacts = getFiles("contacts.txt");
-//
-//    }
-//display file contacts in a list of strings
 
-
-    public static List<String> getFiles() {
+//display file contacts in a list of strings and formats
+    public static List<String> getContacts() {
         Path p = Paths.get("src", "contacts.txt");
         List<String> contacts = new ArrayList<>();
-
-
         try {
             contacts = Files.readAllLines(p);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         System.out.printf("------------------------------------\n");
             System.out.printf("%-20s | %-10s|\n" ,"Name", "Phone number");
         System.out.printf("------------------------------------\n");
@@ -35,10 +25,8 @@ public class TrackContacts {
         }
         System.out.printf("------------------------------------\n");
         return contacts;
-
-
     }
-
+//allows user to add a contact
     public static void addContact(String newContact) {
 
         List<String> contact = new ArrayList<>();
@@ -53,13 +41,14 @@ public class TrackContacts {
         }
 
     }
+//searches for a contact
 
     public static void searchContacts(String userSearch) {
         List<String> contacts;
         try {
             contacts = Files.readAllLines(Paths.get("src", "contacts.txt"));
             for (String name : contacts) {
-                if (name.contains(userSearch)) {
+                if (name.toLowerCase().contains(userSearch.toLowerCase())) {
                     System.out.println("Contact:\n" + name);
                 }
             }

@@ -24,25 +24,16 @@ public class TrackContacts {
             e.printStackTrace();
         }
 
-//        for (int i = 0; i < contacts.size(); i += 1) {
-//            System.out.println(contacts.get(i));
-//
-//        }
-            System.out.printf("%-20s | %s\n" ,"Name", "Phone number");
-        System.out.printf("--------------------------------------\n");
+
+        System.out.printf("------------------------------------\n");
+            System.out.printf("%-20s | %-10s|\n" ,"Name", "Phone number");
+        System.out.printf("------------------------------------\n");
         String[] userContact;
         for (String name : contacts){
             userContact = name.split(" ");
-            System.out.printf("%-20s | %s\n",userContact[0], userContact[1]);
-//            System.out.println(userContact[0]);
-//            System.out.println(userContact[1]);
-
+            System.out.printf("%-20s | %12s|\n",userContact[0], userContact[1]);
         }
-
-//        String yourInteger = "123450";
-//        System.out.printf("%10s%n", "Name|Num");
-//        String s = String.format("%10s%n", (yourInteger.substring(0,3)) + " | "+ (yourInteger.substring(3)));
-//        System.out.println(s);
+        System.out.printf("------------------------------------\n");
         return contacts;
 
 

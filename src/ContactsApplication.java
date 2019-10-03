@@ -1,12 +1,23 @@
 import util.Input;
 
-public class ContactsApplication {
-    public static void main(String[] args) {
 
-        Welcome msg = new Welcome();
-        msg.welcomeDisplay();
-        Input userSelect = new Input();
-        msg.userOptions(userSelect.getInt(1,5));
+public class ContactsApplication {
+
+    public static void main(String[] args) {
+//        Input y = new Input();
+        boolean willContinue;
+        int user;
+
+        do {
+            Welcome msg = new Welcome();
+            msg.welcomeDisplay();
+            Input input = new Input();
+             user = (input.getInt(1, 5));
+            willContinue = msg.userOptions(user);
+
+        } while (willContinue);
+
+
 //        TrackContacts x  = new TrackContacts();
 //        x.getFiles("contacts.txt");
 //        x.addContact("Mike ");

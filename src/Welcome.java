@@ -14,7 +14,8 @@ public void welcomeDisplay(){
             "Enter an option (1, 2, 3, 4 or 5):");
 }
 
-public void userOptions(int userSelect){
+public boolean userOptions(int userSelect){
+    boolean output = true;
     Input userInput = new Input();
     switch(userSelect){
         case 1: getFiles();
@@ -30,7 +31,11 @@ public void userOptions(int userSelect){
                 deleteContact(userInput.getString());
                 break;
         case 5:
+            System.out.println("Exit.");
+            output = false;
+            break;
     }
+    return output;
 }
 
 

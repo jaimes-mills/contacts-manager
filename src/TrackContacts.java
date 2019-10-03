@@ -12,8 +12,8 @@ public class TrackContacts {
 //display file contacts in a list of strings
 
 
-    public static List<String> getFiles(String file) {
-        Path p = Paths.get("src", file);
+    public static List<String> getFiles() {
+        Path p = Paths.get("src", "contacts.txt");
         List<String> contacts = new ArrayList<>();
 
         try {
@@ -36,17 +36,14 @@ public class TrackContacts {
         List<String> contact = new ArrayList<>();
         contact.add(newContact);
         try {
-            if (contact.contains(newContact)) {
-                System.out.println(newContact + "Already Exists.");
-            } else {
-                Files.write(
-                        Paths.get("src", "contacts.txt"),
-                        Arrays.asList(newContact), // list with one item
-                        StandardOpenOption.APPEND);
-            }
+            Files.write(
+                    Paths.get("src", "contacts.txt"),
+                    Arrays.asList(newContact), // list with one item
+                    StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public static void searchContacts(String userSearch) {
@@ -71,7 +68,8 @@ public class TrackContacts {
             //create new empty list string
             List<String> newList = new ArrayList<>();
             for (String name : contacts) {//loop through original display for userDelete
-                if (name.contains(userDelete)) {
+                userDelete = userDelete.toLowerCase();
+                if (name.toLowerCase().contains(userDelete)) {
                     continue;// skips over userDelete
                 }
                 newList.add(name); //adds remaining names to new ArrayList
